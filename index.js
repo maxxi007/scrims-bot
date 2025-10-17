@@ -13,6 +13,22 @@ const TOKEN = process.env.DISCORD_TOKEN;
 const GUILD_ID = process.env.GUILD_ID;
 const SERVER_TZ = process.env.TIMEZONE || 'Asia/Kolkata';
 
+// --- Health check server for Render ---
+const http = require('http');
+const PORT = process.env.PORT || 8080;
+
+http.createServer((req, res) => {
+  if (req.url === '/healthz') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    return res.end('OK');
+  }
+  res.writeHead(404);
+  res.end();
+}).listen(PORT, () => {
+  console.log(`Health server running on port ${PORT}`);
+});
+// --- End of health check server ---
+
 if (!TOKEN || !GUILD_ID) {
   console.error('DISCORD_TOKEN and GUILD_ID must be set in environment variables');
   process.exit(1);
