@@ -1,0 +1,16 @@
+{
+  "name": "farlight84-scrims-bot",
+  "version": "1.0.0",
+  "description": "Farlight 84 Scrims Manager - Discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "canvas": "^2.11.2",
+    "moment-timezone": "^0.5.45",
+    "sqlite3": "^5.1.6",
+    "dotenv": "^16.3.1"
+  }
+}
