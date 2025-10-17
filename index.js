@@ -45,7 +45,12 @@ const captchaMap = {};
 // Initialize DB
 let db;
 (async () => {
-  db = await open({ filename: './scrims.sqlite', driver: sqlite3.Database });
+        
+  // --- Render-compatible database path ---
+const dbPath = process.env.DB_PATH || './scrims.sqlite';
+db = await open({ filename: dbPath, driver: sqlite3.Database });
+// --- End DB patch ---
+
   await db.exec(`CREATE TABLE IF NOT EXISTS teams (
     team_name TEXT PRIMARY KEY,
     team_tag TEXT,
